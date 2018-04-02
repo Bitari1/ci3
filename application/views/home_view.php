@@ -39,12 +39,8 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>            
-            <li class="nav-item">
+            </li>            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Blog</a>
             </li>
           </ul>
         </div>
@@ -61,7 +57,7 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Apa lagi yang menarik dari Malang? Agar tak mengenal Malang hanya dari sejuk dan apelnya, berikut ini rangkuman 10 tempat wisata di Malang yang sayang sekali jika dilewatkan:</p>
+            <p class="text-faded mb-5">Apa lagi yang menarik dari Malang? Agar tak mengenal Malang hanya dari sejuk dan apelnya, berikut ini rangkuman tempat wisata di Malang yang sayang sekali jika dilewatkan:</p>
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
           </div>
         </div>
@@ -70,13 +66,24 @@
 
     <section class="bg-primary" id="about">
       <div class="container">
+
+        <?php foreach ($artikel as $key): ?>
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">Welcome </h2>
+            <h2 class="section-heading text-white"><?php echo $key->judul ?></h2>
             <hr class="light my-4">
-            <p class="text-faded mb-4">Malang, adalah salah satu kabupaten dan kota di Jawa Timur yang terletak di dataran tinggi, berjarak 90 Km dari Kota Surabaya. Karena letaknya yang tinggi, kota ini memiliki udara yang sejuk dan nyaman untuk dikunjungi.</p>
+            <p class="text-faded mb-4">
+              <img src="img/<?php echo $key->gambar;?>" alt="Image" width="200">
+                  <br>
+              Diupload tanggal : <?php echo $key->tanggal ?><br>
+              <a  href="blog/detail/<?php echo $key->id ?>">
+                  <font color="white">Read View...</font>
+              </a>
+            </p>
           </div>
         </div>
+        <?php endforeach ?>
+
       </div>
     </section>
 
