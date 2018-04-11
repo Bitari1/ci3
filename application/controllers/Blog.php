@@ -17,7 +17,43 @@ class Blog extends CI_Controller {
 		$this->load->view('home_detail', $data);
 	}
 
+	public function tambah()
+	{
+		$this->load->model('artikel');
+		$data = array();
+
+		if ($this->input->post('simpan')) {
+			$upload = $this->artikel->upload();
+
+			if ($upload['result'] == 'success') {
+				$this->artikel->insert($upload);
+				redirect('blog');
+			}else{
+				$data['message'] = $upload['error'];
+			}
+		}
+
+		$this->load->view('home_view', $data);
+	}
+
+	public function delete($id) {
+		$this->load->model('artikel');
+		$this->artikel->delete($id);
+		redirect('blog');
+	}
+
+	public function edit($id){
+		$this->load->model('artikel');
+		$data['tipe'] = "edit";
+		$data['default'] = $this->artikel->get_default($id);
+
+		if(isset($_POST['simpan'])){
+			$this->artikel->update($_POST, $id);
+			redirect('home_view');
+		}
+		$this->load->view("home_viewform", $data);
+
+	}
+
 }
 
-/* End of file Blog.php */
-/* Location: ./application/controllers/Blog.php */

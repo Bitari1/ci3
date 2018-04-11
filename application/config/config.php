@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://localhost/ci3/';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +72,7 @@ $config['url_suffix'] = '';
 |--------------------------------------------------------------------------
 |
 | This determines which set of language files should be used. Make sure
-| there is an available translation if you intend to use something other
+`	| there is an available translation if you intend to use something other
 | than english.
 |
 */

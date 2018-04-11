@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="blog">About</a>
             </li>            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
@@ -79,13 +79,49 @@
               <a  href="blog/detail/<?php echo $key->id ?>">
                   <font color="white">Read View...</font>
               </a>
+              &nbsp &nbsp &nbsp &nbsp
+
+              <a href='blog/edit/<?php echo $key->id?>' class='btn btn-sm btn-info'> Update</a>
+              <a href='blog/delete/<?php echo $key->id;?>' class='btn btn-sm btn-danger'>Delete</a>
             </p>
           </div>
         </div>
+        <br> <br> <br>
         <?php endforeach ?>
 
       </div>
     </section>
+
+    <div class="container">
+      <?php
+        echo form_open('blog/tambah', array('enctype'=>'multipart/form-data')); 
+       ?>
+      <table>
+        <tr>
+          <td>Judul</td>
+          <td>:</td>
+          <td><input type="text" name="input_judul" value="<?php echo set_value('input_judul'); ?>"></td>
+        </tr>
+        <tr>
+          <td>Content</td>
+          <td>:</td>
+          <td><input type="text" name="input_content" value=""></td>
+        </tr>
+        <tr>
+          <td>Tanggal </td>
+          <td>:</td>
+          <td><input type="text" name="input_tanggal" value=""></td>
+        </tr>
+        <tr>
+          <td>Gambar</td>
+          <td>:</td>
+          <td><input type="file" name="input_gambar"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="submit" name="simpan" value="simpan"></td>
+        </tr>
+      </table>
+    </div>
 
   
     <section id="contact">
