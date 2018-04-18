@@ -41,8 +41,11 @@ class Artikel extends CI_Model {
 		$data = array(
 			'id' => '',
 			'judul' => $this->input->post('input_judul'),
-			'konten' => $this->input->post('input_content'),
+			'konten' => $this->input->post('input_konten'),
 			'tanggal' => $this->input->post('input_tanggal'),
+			'kategori' => $this->input->post('input_kategori'),
+			'penulis' => $this->input->post('input_penulis'),
+			'sumber' => $this->input->post('input_sumber'),
 			'gambar' => $upload['file']['file_name']
 		);
 
@@ -54,8 +57,11 @@ class Artikel extends CI_Model {
 		$judul = $this->db->escape($post['judul']);
 		$konten = $this->db->escape($post['konten']);
 		$tanggal = $this->db->escape($post['tanggal']);
+		$kategori = $this->db->escape($post['kategori']);
+		$penulis = $this->db->escape($post['penulis']);
+		$sumber = $this->db->escape($post['sumber']);
 
-		$sql = $this->db->query('UPDATE blog SET judul = $judul, konten = $konten, tanggal = $tanggal WHERE id = '.intval($id));
+		$sql = $this->db->query('UPDATE blog SET judul = $judul, konten = $konten, tanggal = $tanggal, kategori = $kategori, penulis = $penulis, sumber = $sumber WHERE id = '.intval($id));
 
 		return TRUE;
 	}
