@@ -24,7 +24,15 @@
         <tr>
           <td>Kategori </td>
           <td>:</td>
-          <td><input type="text" name="input_kategori" value="<?php echo set_value('input_kategori'); ?>"></td>
+          <td>
+            <select name="cat_id" class="form-control" required=>
+            <option value="">Pilih Kategori</option>
+            <?php foreach($kategori as $category); ?>
+            <option value="<?php echo $category->id_kategori; ?>"><?php echo $category->cat_name; ?>
+            ></option>
+            </select>
+            <div class="invalid feedback">Pilih Dulu kategorinya</div>
+            <input type="text" name="input_kategori" value="<?php echo set_value('input_kategori'); ?>"></td>
         </tr>
         <tr>
           <td>Penulis </td>
