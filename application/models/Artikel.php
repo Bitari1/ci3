@@ -12,6 +12,12 @@ class Artikel extends CI_Model {
 	{
 		$query = $this->db->query('select * from blog where id='.$id);
 		return $query->result();
+
+		$this->db->select("*");
+		$this->db->from('blog');
+		$this->db->join('categories','blog.id = categories.id');
+		$this->db->where('blog.id ='.$id);
+		return $this->db->get()->result();
 	}
 
 	//model upload gambar

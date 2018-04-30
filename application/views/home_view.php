@@ -41,8 +41,10 @@
               <a class="nav-link js-scroll-trigger" href="blog">About</a>
             </li>            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-            
+<!--             </li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url().'category'; ?> ">Kategori</a>
+            </li> -->
+
           </ul>
         </div>
       </div>
@@ -118,12 +120,16 @@
         </tr>
         <tr> -->
           <br>
-          <li><a href="blog/tambah" class="btn btn-sm btn-danger"> Tambah</a></li>
+          <li><a href="blog/tambah" class="btn btn-sm btn-danger"> Tambah Artikel</a></li>
         </tr>
       </table>
     </div><br><br>
 
-    <?php echo form_open( 'category/create', array('class' => 'needs-validation', 'novalidate' =>
+    <div>
+  <a href='category' class='btn btn-sm btn-danger'>Kategori</a>
+</div>
+
+<!--     <?php echo form_open( 'category/create', array('class' => 'needs-validation', 'novalidate' =>
 '') ); ?>
 <div class="form-group">
  <label for="cat_name">Nama Kategori</label>
@@ -137,7 +143,7 @@ set_value('cat_name') ?>" required>
 set_value('cat_description') ?>" required>
  <div class="invalid-feedback">Isi deskripsinya dulu gan</div>
 </div>
-<button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button>
+<button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button> -->
 
 
   
