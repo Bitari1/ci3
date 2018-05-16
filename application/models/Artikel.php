@@ -8,6 +8,29 @@ class Artikel extends CI_Model {
 		return $query->result();
 	}	
 
+
+	public function get_all_artikel( $limit = FALSE, $offset = FALSE )
+ 	{
+ 	// Jika variable $limit ada pada parameter maka kita limit query-nya
+ 		if ( $limit ) { 
+ 			$this->db->limit($limit, $offset);
+ 		}
+ 			// Urutkan berdasar tanggal
+ 		$this->db->order_by('blog.tanggal', 'DESC');
+ 		// Inner Join dengan table Categories
+	 	$query = $this->db->get('blog');	
+ 		// Return dalam bentuk object
+ 		return $query->result();
+ 	}
+
+
+		public function get_total()
+ 	{
+ 		// Dapatkan jumlah total artikel
+ 		return $this->db->count_all("blog");
+ 	}
+
+
 	public function get_single($id)
 	{
 		$query = $this->db->query('select * from blog where id='.$id);
@@ -15,7 +38,7 @@ class Artikel extends CI_Model {
 
 		$this->db->select("*");
 		$this->db->from('blog');
-		$this->db->join('categories','blog.id = categories.id');
+		$this->db->join('categories','blog.id = categories.id_cat');
 		$this->db->where('blog.id ='.$id);
 		return $this->db->get()->result();
 	}
@@ -25,8 +48,8 @@ class Artikel extends CI_Model {
 	public function upload()
 	{
 		$config['upload_path'] = './img/';
-		$config['allowed_types'] = 'jpg|png';
-		$config['max_size']  = '2048';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size']  = '1000000000';
 		$config['remove_space']  = TRUE;
 		
 		$this->load->library('upload', $config);
@@ -49,17 +72,17 @@ class Artikel extends CI_Model {
 			'judul' => $this->input->post('input_judul'),
 			'konten' => $this->input->post('input_konten'),
 			'tanggal' => $this->input->post('input_tanggal'),
-			'kategori' => $this->input->post('input_kategori'),
+			'gambar' => $upload['file']['file_name'],
+			'kategori' => $this->input->post('kategori'),
 			'penulis' => $this->input->post('input_penulis'),
-			'sumber' => $this->input->post('input_sumber'),
-			'gambar' => $upload['file']['file_name']
+			'sumber' => $this->input->post('input_sumber'),			
 		);
 
 		$this->db->insert('blog', $data);
 	}
 
 
-	public function update($post, $id){
+	public function edit($post, $id){
 		$judul = $this->db->escape($post['judul']);
 		$konten = $this->db->escape($post['konten']);
 		$tanggal = $this->db->escape($post['tanggal']);
@@ -77,21 +100,5 @@ class Artikel extends CI_Model {
 		$query = $this->db->query('DELETE from blog WHERE id= '.$id);
 	}
 
-	// public function create_category() {		
-	// 	 $data = array(
- // 			'cat_name' => $this->input->post('cat_name'),
- // 			'cat_description' => $this->input->post('cat_description')
- // 		);
-	// 	 return $this->db->insert('categories', $data);
- // 	}
-
- // 	// Tambahkan fungsi get data seperti berikut ini
- // 	public function get_all_categories()
- // 	{
- // 	// Urutkan berdasar abjad
-	//  $this->db->order_by('cat_name');
- // 	$query = $this->db->get('categories');
- // 	return $query->result();
- // 	}
-
+ 
 }

@@ -29,7 +29,7 @@
   <body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav>
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">HOME</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,49 +38,60 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>            
+              <!-- <a class="nav-link js-scroll-trigger" href="blog">About</a>-->
+            </li>             
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Blog</a>
-            </li>
+            <!--  </li class="nav-item">
+              <a class="nav-link" href="<?php// echo base_url().'category'; ?> ">Kategori</a>-->
+            </li> 
+
           </ul>
         </div>
       </div>
     </nav>
 
-    <header class="masthead text-center text-white d-flex">
+    <header class=" text-center d-flex">
       <div class="container my-auto">
         <div class="row">
+          
           <div class="col-lg-10 mx-auto">
-            <h1 class="text-uppercase">
-              <strong>Pariwisata Kota Malang</strong>
-            </h1>
-            <hr>
+            <h3 class="text-uppercase">
+              <strong>Daftar Kategori</strong>
+            </h3><hr>
           </div>
+
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Apa lagi yang menarik dari Malang? Agar tak mengenal Malang hanya dari sejuk dan apelnya, berikut ini rangkuman 10 tempat wisata di Malang yang sayang sekali jika dilewatkan:</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            <center>
+            <table class="table table-striped text-center">
+              <th>
+                <td>nama</td>
+                <td>deskripsi</td>
+                <td>aksi</td>
+              </th>
+              <tr>
+                <?php foreach ($categories as $key): ?>
+                <td><?php echo $key->id_cat?></td>
+                <td><?php echo $key->cat_name ?></td>
+                <td><?php echo $key->cat_description ?></td>
+                <td>
+                  <a href='Category/edit/<?php echo $key->id_cat ?>' class='btn btn-sm btn-info'>Update</a>
+                  <a href='Category/delete/<?php echo $key->id_cat ?>' class='btn btn-sm btn-danger'>Hapus</a>
+                </td>
+              </tr>
+              <?php endforeach?>
+            </table>
+            </center>
+
+            <br>
+            <a class="btn btn-primary js-scroll-trigger" href="<?php echo  base_url()?>category/create">Tambah</a>
           </div>
+
         </div>
       </div>
     </header>
 
-    <section class="bg-primary" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">Welcome </h2>
-            <hr class="light my-4">
-            <p class="text-faded mb-4">Malang, adalah salah satu kabupaten dan kota di Jawa Timur yang terletak di dataran tinggi, berjarak 90 Km dari Kota Surabaya. Karena letaknya yang tinggi, kota ini memiliki udara yang sejuk dan nyaman untuk dikunjungi.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  
+<br>
     <section id="contact">
       <div class="container">
         <div class="row">
@@ -106,16 +117,24 @@
     </section>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="<?php echo base_url()?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?php echo base_url()?>assets/vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="<?php echo base_url()?>assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="assets/js/creative.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/creative.min.js"></script>
+
+  <!--   <script src="<?php //echo base_url('') ?>assets/datatables.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#example'.datatables());
+      });
+    </script> -->
 
   </body>
 

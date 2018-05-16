@@ -16,11 +16,12 @@
       <div class="col-lg-7 mx-auto">
 
         <h3 class="text-uppercase text-center">
-          <strong>Tambah Artikel</strong>
+          <strong>Edit Artikel</strong>
         </h3><hr>
-
+<div class="container">
+        <?php foreach ($single as $key): ?>
         <?php echo validation_errors(); ?>
-        <?php echo form_open_multipart( 'blog/tambah', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+        <?php echo form_open_multipart( 'blog/edit', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
             <table class="table table-striped text-center">
               <tr>
                   <select name="kategori" class="form-control" required=>

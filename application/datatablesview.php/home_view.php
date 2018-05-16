@@ -19,7 +19,7 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    
+    <link href="<?php echo base_url()?>assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url()?>assets/css/creative.min.css" rel="stylesheet">
@@ -43,8 +43,6 @@
               <a class="nav-link js-scroll-trigger" href="blog">About</a>
             </li>            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="datatablesctr">Datatables</a>
 <!--             </li class="nav-item">
               <a class="nav-link" href="<?php //echo base_url().'category'; ?> ">Kategori</a>
             </li> -->
@@ -99,6 +97,21 @@
       </div>
     </section>
 
+   <!--  // Sesuaikan dengan blok element pagination pada Bootstrap
+// https://getbootstrap.com/docs/4.0/components/pagination/#alignment -->
+<nav aria-label="Page navigation example">
+<ul class="pagination justify-content-center">
+ <li class="page-item disabled">
+ <a class="page-link" href="#" tabindex="-1">Previous</a>
+ </li>
+ <li class="page-item"><a class="page-link" href="#">1</a></li>
+ <li class="page-item"><a class="page-link" href="#">2</a></li>
+ <li class="page-item"><a class="page-link" href="#">3</a></li>
+ <li class="page-item">
+ <a class="page-link" href="#">Next</a>
+ </li>
+</ul>
+</nav>
 
 <?php
  // $links ini berasal dari fungsi pagination
