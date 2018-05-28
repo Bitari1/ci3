@@ -11,7 +11,7 @@ public function index()
 
     $this->load->view('tampil_category', $data);
 }
-
+ 
 
     public function detail($id)
     {
