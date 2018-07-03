@@ -49,10 +49,10 @@ class User_model extends CI_Model {
          }
      }
 
-     public function get_user_details( $user_id )
+     public function get_user_details( $username )
          {
             $this->db->join('levels', 'levels.level_id = users.fk_level_id', 'left');
-            $this->db->where('user_id', $user_id);
+            $this->db->where('username', $username);
             
             $result = $this->db->get('users');
             if ($result->num_rows() == 1) {

@@ -39,16 +39,22 @@ class User extends CI_Controller{
 		}
 	}
 
+	//untuk memanggil sesion level 
+	public function get_userdata(){
+        $userData = $this->session->userdata();
+        return $userData;
+    }
+
 	// Log in user
 	public function login(){
-		$data['page_title'] = 'Log In';
+		 $data['page_title'] = 'Log In';
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('template/header');
-			$this->load->view('users/login', $data);
+			$this->load->view('users/login');
 			$this->load->view('template/footer');
 		} else {
 			
@@ -90,28 +96,52 @@ class User extends CI_Controller{
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('user_id');
 		$this->session->unset_userdata('username');
+		$user_id = $this->session->userdata('user_id');
 
 		// Set message
 		$this->session->set_flashdata('user_loggedout', 'Anda sudah log out');
 
 		redirect('user/login');
-	}
+
+		// Dapatkan detail dari User
+		$data['user'] = $this->user_model->get_user_details( $id_user );
+
+	
+		// Load view
+		$this->load->view('templates/header', $data, FALSE);
+		$this->load->view('templates/footer', $data, FALSE);
+		}
+	
 
 	// Dashboard
 	 public function dashboard(){
 	 	if(!$this->session->userdata('logged_in')){
 			redirect('user/login');
 		}
-	 	$user_id = $this->session->userdata('username');
+	 	$username = $this->session->userdata('username');
 
 	// Dapatkan detail user
 	$data['user'] = $this->user_model->get_user_details( $user_id );
 
-	// Load dashboard
-	 $this->load->view('template/header');
-	 $this->load->view('users/dashboard', $data);
-	 $this->load->view('template/footer');
-	 }
+	$userData = $this->get_userdata();
+        if ($userData['fk_level_id'] === '1'){
+            $this->load->view('template/header');
+            $this->load->view('v_user1', $data);
+            $this->load->view('template/footer');
+        } else if ($userData['fk_level_id'] === '2'){
+            $this->load->view('template/header');
+            $this->load->view('v_user2', $data);
+            $this->load->view('template/footer');
+        } else if ($userData['fk_level_id'] === '3') {
+            $this->load->view('template/header');
+            $this->load->view('v_dashboard', $data);
+            $this->load->view('template/footer');
+        }
 
+	// Load dashboard
+	 // $this->load->view('template/header');
+	 // $this->load->view('users/dashboard', $data);
+	 // $this->load->view('template/footer');
+	 }
 
 }

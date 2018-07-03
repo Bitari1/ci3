@@ -44,9 +44,18 @@
             </li>
               <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="datatablesctr">Datatables</a>
+                   <?php if($this->session->userdata('logged_in')) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url()?>User/dashboard">Dashboard</a>
             </li>
+          </ul>
+          <div class="btn-group" role="group" aria-label="Data baru">
+                <?php echo anchor('User/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
+              </div>
+            <?php endif; ?>
+              <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="datatablesctr">Datatables</a>
+            </li> -->
           </ul>
             <?php if(!$this->session->userdata('logged_in')) : ?>
 
